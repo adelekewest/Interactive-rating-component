@@ -9,28 +9,47 @@ var targetValue = '';
 
 //Looping through list items.
 for(let i = 0; i < countList.length; i++) {
-    countList[i].addEventListener('click', (e) => {
+  countList[i].addEventListener('click', (e) => {
         let target = e.target;
         targetValue = target.getAttribute('id');
 
         /*Looping through the numbers to check for a previously selected
         rating and removing if there is such */
-        for (let i = 0; i < countList.length; i++) {
-            countList[i].classList.contains('selected');
-            countList[i].classList.remove('selected');
-        }
+       for (let i = 0; i < countList.length; i++) {
+           countList[i].classList.contains('selected');
+           countList[i].classList.remove('selected');
+       }
         // adds the selected class which shows what number was clicked on.
         countList[i].classList.add('selected');
-    });
-    
+   }); 
+
     //Listening for a click event to add a new interface to the screen to thank the user 
     submitButton.addEventListener('click', (e) => {
         e.preventDefault();
         thankState.classList.remove('hidden');
         ratingState.classList.add('hidden');
-       rating.textContent= targetValue;
+        rating.textContent= targetValue;
     });
-
 }
+/* OR you can check this alternate solution out.
+  for (const count of countList) {
+    count.addEventListener('click', (e) => {
+        let target = e.target;
+        targetValue = target.getAttribute('id');
 
+    for (const count of countList) {
+        count.classList.contains('selected');
+        count.classList.remove('selected');
+  }
+    count.classList.add('selected');
+    });
+    
+    submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        thankState.classList.remove('hidden');
+        ratingState.classList.add('hidden');
+        rating.textContent= targetValue;
+    });
+}
+*/
 
